@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		994DC1A3280341D300A20BCD /* GenreListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DC1A2280341D300A20BCD /* GenreListRouter.swift */; };
+		994DC1A52803428100A20BCD /* GenreListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DC1A42803428100A20BCD /* GenreListPresenter.swift */; };
+		994DC1A82803435C00A20BCD /* GenreListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DC1A72803435C00A20BCD /* GenreListInteractor.swift */; };
+		994DC1AB2803584F00A20BCD /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DC1A92803584F00A20BCD /* GenreCell.swift */; };
+		994DC1AC2803584F00A20BCD /* GenreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994DC1AA2803584F00A20BCD /* GenreCell.xib */; };
 		9981992828002ECA00D9C6C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9981992728002ECA00D9C6C1 /* AppDelegate.swift */; };
 		9981992A28002ECA00D9C6C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9981992928002ECA00D9C6C1 /* SceneDelegate.swift */; };
-		9981992C28002ECA00D9C6C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9981992B28002ECA00D9C6C1 /* ViewController.swift */; };
-		9981992F28002ECA00D9C6C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9981992D28002ECA00D9C6C1 /* Main.storyboard */; };
+		9981992C28002ECA00D9C6C1 /* GenreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9981992B28002ECA00D9C6C1 /* GenreListView.swift */; };
+		9981992F28002ECA00D9C6C1 /* GenreList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9981992D28002ECA00D9C6C1 /* GenreList.storyboard */; };
 		9981993228002ECA00D9C6C1 /* mandiriVIPER.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9981993028002ECA00D9C6C1 /* mandiriVIPER.xcdatamodeld */; };
 		9981993428002ECB00D9C6C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9981993328002ECB00D9C6C1 /* Assets.xcassets */; };
 		9981993728002ECB00D9C6C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9981993528002ECB00D9C6C1 /* LaunchScreen.storyboard */; };
@@ -39,11 +44,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		994DC1A2280341D300A20BCD /* GenreListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListRouter.swift; sourceTree = "<group>"; };
+		994DC1A42803428100A20BCD /* GenreListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListPresenter.swift; sourceTree = "<group>"; };
+		994DC1A72803435C00A20BCD /* GenreListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListInteractor.swift; sourceTree = "<group>"; };
+		994DC1A92803584F00A20BCD /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
+		994DC1AA2803584F00A20BCD /* GenreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCell.xib; sourceTree = "<group>"; };
 		9981992428002EC900D9C6C1 /* mandiriVIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mandiriVIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9981992728002ECA00D9C6C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9981992928002ECA00D9C6C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9981992B28002ECA00D9C6C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9981992E28002ECA00D9C6C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9981992B28002ECA00D9C6C1 /* GenreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListView.swift; sourceTree = "<group>"; };
+		9981992E28002ECA00D9C6C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GenreList.storyboard; sourceTree = "<group>"; };
 		9981993128002ECA00D9C6C1 /* mandiriVIPER.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mandiriVIPER.xcdatamodel; sourceTree = "<group>"; };
 		9981993328002ECB00D9C6C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9981993628002ECB00D9C6C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,6 +92,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		994DC1A6280342E800A20BCD /* GenreList */ = {
+			isa = PBXGroup;
+			children = (
+				994DC1A2280341D300A20BCD /* GenreListRouter.swift */,
+				994DC1A42803428100A20BCD /* GenreListPresenter.swift */,
+				994DC1A72803435C00A20BCD /* GenreListInteractor.swift */,
+				9981992B28002ECA00D9C6C1 /* GenreListView.swift */,
+				9981992D28002ECA00D9C6C1 /* GenreList.storyboard */,
+				994DC1A92803584F00A20BCD /* GenreCell.swift */,
+				994DC1AA2803584F00A20BCD /* GenreCell.xib */,
+			);
+			path = GenreList;
+			sourceTree = "<group>";
+		};
 		9981991B28002EC900D9C6C1 = {
 			isa = PBXGroup;
 			children = (
@@ -105,12 +129,11 @@
 		9981992628002EC900D9C6C1 /* mandiriVIPER */ = {
 			isa = PBXGroup;
 			children = (
+				994DC1A6280342E800A20BCD /* GenreList */,
 				DFCEC5572801671B003A1008 /* Model */,
 				DFCEC55428016257003A1008 /* Network */,
 				9981992728002ECA00D9C6C1 /* AppDelegate.swift */,
 				9981992928002ECA00D9C6C1 /* SceneDelegate.swift */,
-				9981992B28002ECA00D9C6C1 /* ViewController.swift */,
-				9981992D28002ECA00D9C6C1 /* Main.storyboard */,
 				9981993328002ECB00D9C6C1 /* Assets.xcassets */,
 				9981993528002ECB00D9C6C1 /* LaunchScreen.storyboard */,
 				9981993828002ECB00D9C6C1 /* Info.plist */,
@@ -258,7 +281,8 @@
 			files = (
 				9981993728002ECB00D9C6C1 /* LaunchScreen.storyboard in Resources */,
 				9981993428002ECB00D9C6C1 /* Assets.xcassets in Resources */,
-				9981992F28002ECA00D9C6C1 /* Main.storyboard in Resources */,
+				9981992F28002ECA00D9C6C1 /* GenreList.storyboard in Resources */,
+				994DC1AC2803584F00A20BCD /* GenreCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,10 +307,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				994DC1A52803428100A20BCD /* GenreListPresenter.swift in Sources */,
 				DFCEC5592801672E003A1008 /* MovieDB.swift in Sources */,
 				DFCEC5562801627C003A1008 /* APIConnect.swift in Sources */,
-				9981992C28002ECA00D9C6C1 /* ViewController.swift in Sources */,
+				994DC1AB2803584F00A20BCD /* GenreCell.swift in Sources */,
+				994DC1A82803435C00A20BCD /* GenreListInteractor.swift in Sources */,
+				9981992C28002ECA00D9C6C1 /* GenreListView.swift in Sources */,
 				9981992828002ECA00D9C6C1 /* AppDelegate.swift in Sources */,
+				994DC1A3280341D300A20BCD /* GenreListRouter.swift in Sources */,
 				9981992A28002ECA00D9C6C1 /* SceneDelegate.swift in Sources */,
 				9981993228002ECA00D9C6C1 /* mandiriVIPER.xcdatamodeld in Sources */,
 			);
@@ -325,12 +353,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9981992D28002ECA00D9C6C1 /* Main.storyboard */ = {
+		9981992D28002ECA00D9C6C1 /* GenreList.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9981992E28002ECA00D9C6C1 /* Base */,
 			);
-			name = Main.storyboard;
+			name = GenreList.storyboard;
 			sourceTree = "<group>";
 		};
 		9981993528002ECB00D9C6C1 /* LaunchScreen.storyboard */ = {
@@ -472,7 +500,6 @@
 				INFOPLIST_FILE = mandiriVIPER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -500,7 +527,6 @@
 				INFOPLIST_FILE = mandiriVIPER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
