@@ -17,6 +17,8 @@
 		9981994228002ECB00D9C6C1 /* mandiriVIPERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9981994128002ECB00D9C6C1 /* mandiriVIPERTests.swift */; };
 		9981994C28002ECB00D9C6C1 /* mandiriVIPERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9981994B28002ECB00D9C6C1 /* mandiriVIPERUITests.swift */; };
 		9981994E28002ECB00D9C6C1 /* mandiriVIPERUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9981994D28002ECB00D9C6C1 /* mandiriVIPERUITestsLaunchTests.swift */; };
+		DFCEC5562801627C003A1008 /* APIConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCEC5552801627C003A1008 /* APIConnect.swift */; };
+		DFCEC5592801672E003A1008 /* MovieDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCEC5582801672E003A1008 /* MovieDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		9981994728002ECB00D9C6C1 /* mandiriVIPERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mandiriVIPERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9981994B28002ECB00D9C6C1 /* mandiriVIPERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mandiriVIPERUITests.swift; sourceTree = "<group>"; };
 		9981994D28002ECB00D9C6C1 /* mandiriVIPERUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mandiriVIPERUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DFCEC5552801627C003A1008 /* APIConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConnect.swift; sourceTree = "<group>"; };
+		DFCEC5582801672E003A1008 /* MovieDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 		9981992628002EC900D9C6C1 /* mandiriVIPER */ = {
 			isa = PBXGroup;
 			children = (
+				DFCEC5572801671B003A1008 /* Model */,
+				DFCEC55428016257003A1008 /* Network */,
 				9981992728002ECA00D9C6C1 /* AppDelegate.swift */,
 				9981992928002ECA00D9C6C1 /* SceneDelegate.swift */,
 				9981992B28002ECA00D9C6C1 /* ViewController.swift */,
@@ -128,6 +134,22 @@
 				9981994D28002ECB00D9C6C1 /* mandiriVIPERUITestsLaunchTests.swift */,
 			);
 			path = mandiriVIPERUITests;
+			sourceTree = "<group>";
+		};
+		DFCEC55428016257003A1008 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DFCEC5552801627C003A1008 /* APIConnect.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DFCEC5572801671B003A1008 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DFCEC5582801672E003A1008 /* MovieDB.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFCEC5592801672E003A1008 /* MovieDB.swift in Sources */,
+				DFCEC5562801627C003A1008 /* APIConnect.swift in Sources */,
 				9981992C28002ECA00D9C6C1 /* ViewController.swift in Sources */,
 				9981992828002ECA00D9C6C1 /* AppDelegate.swift in Sources */,
 				9981992A28002ECA00D9C6C1 /* SceneDelegate.swift in Sources */,
