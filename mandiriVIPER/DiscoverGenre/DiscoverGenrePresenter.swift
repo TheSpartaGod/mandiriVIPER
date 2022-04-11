@@ -14,7 +14,8 @@ protocol DiscoverGenrePresenterProtocol {
     var interactor : DiscoverGenreInteractor? {get set}
     
     func interactorDidFetchMovies(with results : MovieResult, images : [UIImage])
-    func didSelectMovie(movieID : Int)
+    func didSelectMovie(movie : Movie)
+    func loadMoreMovies(page : Int)
     
 }
 
@@ -30,11 +31,20 @@ class DiscoverGenrePresenter : DiscoverGenrePresenterProtocol{
     }
     
     func interactorDidFetchMovies(with results : MovieResult, images : [UIImage]) {
-        view?.updateMovieList(with: results, images: images)
+        for i in results.results{
+            view?.movieList?.append(i)
+        }
+        for i in images{
+            view?.imageList?.append(i)
+        }
+        view?.updateMovieList()
     }
     
-    func didSelectMovie(movieID: Int) {
-    
+    func didSelectMovie(movie : Movie) {
+        router?.presentMovieDetail(with: movie, from: view!)
+    }
+    func loadMoreMovies(page : Int) {
+        
     }
     
     

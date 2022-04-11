@@ -26,3 +26,37 @@ struct Movie : Codable{
     let overview : String
     let poster_path : String
 }
+
+struct MovieDetail : Codable {
+    let id : Int
+    let original_title : String
+    let overview : String
+    let poster_path : String
+    let release_date : String
+    let runtime :  Int
+    let status : String
+    let vote_average : Double
+    let vote_count : Int
+    
+}
+
+struct Video : Codable{
+    let id : Int
+    let results : [VideoDetail]
+}
+
+struct VideoDetail : Codable{
+    let key : String
+}
+
+struct ReviewList : Codable {
+    let page : Int
+    let results : [Review]
+    let total_pages : Int
+    
+}
+
+struct Review : Codable {
+    let author : String
+    let content : String
+}

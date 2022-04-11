@@ -12,9 +12,7 @@ protocol DiscoverGenreRouterProtocol{
     var entryView : DiscoverGenreView? {get}
     
     static func start(with genreName : String) -> DiscoverGenreRouterProtocol
-    
-    
-    
+    func presentMovieDetail(with movie: Movie, from view : UIViewController)
 }
 
 class DiscoverGenreRouter : DiscoverGenreRouterProtocol {
@@ -38,6 +36,17 @@ class DiscoverGenreRouter : DiscoverGenreRouterProtocol {
         presenter.view = view
         router.entryView = view
         return router
+    }
+    
+    func presentMovieDetail(with movie: Movie, from view: UIViewController) {
+        let detailRouter = MovieDetailRouter.start(with : movie)
+        print("presenting movie details....")
+        
+        let newView = detailRouter.entryView!
+        
+       
+        
+        view.navigationController?.pushViewController(newView, animated: true)
     }
     
     
