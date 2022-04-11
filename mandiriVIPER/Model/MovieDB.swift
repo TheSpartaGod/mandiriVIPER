@@ -14,3 +14,15 @@ struct Genre : Codable{
     let id : Int
     let name : String
 }
+
+struct MovieResult : Codable {
+    let page : Int
+    let results : [Movie]
+    let total_pages : Int
+}
+struct Movie : Codable{
+    let id : Int
+    let original_title : String
+    let overview : String
+    let poster_path : String
+}

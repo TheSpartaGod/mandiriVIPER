@@ -8,35 +8,44 @@
 import Foundation
 import UIKit
 
-protocol GenreRouter {
-    var view :  GenreListView? { get }
+protocol GenreRouterProtocol {
+    var entryView :  GenreListView? { get }
     
-    static func start() -> GenreRouter
+    static func start() -> GenreRouterProtocol
     
-    
+    func presentDiscover(with name : String, from view : UIViewController)
 }
-class GenreListRouter : GenreRouter {
-    var view: GenreListView?
-    
-    
-    static func start() -> GenreRouter {
+class GenreListRouter : GenreRouterProtocol {
+    var entryView: GenreListView?
+    static var navigationController : UINavigationController?
+    static func start() -> GenreRouterProtocol {
         let router = GenreListRouter()
         //vip here
-        var presenter : GenreListPresenter = GenreListPresenter()
-        var interactor : GenreListInteractor = GenreListInteractor()
+        let presenter : GenreListPresenter = GenreListPresenter()
+        let interactor : GenreListInteractor = GenreListInteractor()
         
         let storyboard = UIStoryboard(name: "GenreList", bundle: nil)
         let view : GenreListView = storyboard.instantiateViewController(withIdentifier: "GenreListView") as! GenreListView
 
-        view.presenter = presenter
+        router.entryView = view
         interactor.presenter = presenter
         presenter.router = router
         presenter.interactor = interactor
         presenter.view = view
+        view.presenter = presenter
         
-        router.view = view
         return router
     }
     
+    func presentDiscover(with name: String, from view : UIViewController) {
+        
+        let discoverRouter = DiscoverGenreRouter.start(with: name)
+        
+        print("presenting new view...")
+        let newView = discoverRouter.entryView!
+       
+        view.navigationController?.pushViewController(newView, animated: true)
+    
+    }
     
 }

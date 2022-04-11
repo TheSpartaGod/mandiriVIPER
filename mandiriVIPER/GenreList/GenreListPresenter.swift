@@ -6,39 +6,37 @@
 //
 
 import Foundation
+import UIKit
 
-protocol GenrePresenter{
-    var router : GenreRouter? {get set}
-    var interactor : GenreInteractor? {get set}
+protocol GenrePresenterProtocol{
+    var router : GenreRouterProtocol? {get set}
+    var interactor : GenreInteractorProtocol? {get set}
     var view : GenreListViewProtocol? {get set}
     
     func interactorDidFetchGenre(with result: [Genre])
-    func didSelectGenre(genreID : Int)
+    func didSelectGenre(genreName : String, from view: UIViewController)
 }
 
-class GenreListPresenter : GenrePresenter{
+class GenreListPresenter : GenrePresenterProtocol{
+
     
-    
-    
-    
-    var interactor: GenreInteractor? {
+    var interactor: GenreInteractorProtocol? {
         didSet {
             interactor?.getGenres()
         }
     }
     
-
-    
     var view: GenreListViewProtocol?
     
-    var router: GenreRouter?
+    var router: GenreRouterProtocol?
     
     func interactorDidFetchGenre(with result: [Genre]) {
         print("got fetched")
         view?.update(with: result)
     }
-    func didSelectGenre(genreID : Int) {
-        
+    func didSelectGenre(genreName : String, from view: UIViewController) {
+        print("got genre name : \(genreName)")
+        router?.presentDiscover(with: genreName, from: view)
     }
     
 }

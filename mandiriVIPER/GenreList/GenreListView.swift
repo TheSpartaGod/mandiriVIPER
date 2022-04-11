@@ -8,22 +8,26 @@
 import UIKit
 
 protocol GenreListViewProtocol {
-    var presenter : GenrePresenter? {get set}
+    var presenter : GenrePresenterProtocol? {get set}
+    var viewController : GenreListView? {get set}
     func update(with genres: [Genre])
 }
 class GenreListView: UIViewController , GenreListViewProtocol{
+    
+    
    
 
     @IBOutlet weak var genreTableView: UITableView!
     
     var genreList : [Genre] = []
-    var presenter: GenrePresenter?
-    
+    var presenter: GenrePresenterProtocol?
+    var viewController: GenreListView?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         print("bruh moment")
+        viewController = self
         genreTableView.register(UINib(nibName: "GenreCell", bundle: nil), forCellReuseIdentifier:"GenreCell")
         genreTableView.delegate = self
         genreTableView.dataSource = self
@@ -51,7 +55,8 @@ extension GenreListView : UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.presenter?.didSelectGenre(genreID: genreList[indexPath.row].id)
+        
+        self.presenter?.didSelectGenre(genreName: String(genreList[indexPath.row].id), from: self)
     }
     
     

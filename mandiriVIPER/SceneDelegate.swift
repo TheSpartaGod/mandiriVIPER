@@ -19,12 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let genreRouter = GenreListRouter.start()
+        let navigationController = UINavigationController()
         
-        let initialVC = genreRouter.view
-        
+        let initialVC = genreRouter.entryView
+        navigationController.viewControllers.append(initialVC!)
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = initialVC
+        window.rootViewController = navigationController
         self.window = window
+        
         window.makeKeyAndVisible()
     }
 
