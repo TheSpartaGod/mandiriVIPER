@@ -12,6 +12,7 @@ protocol DiscoverGenreViewProtocol {
     func updateMovieList()
     var movieList : [Movie]? {get set}
     var imageList : [UIImage]? {get set}
+    var page : Int {get set}
 }
 
 class DiscoverGenreView: UIViewController, DiscoverGenreViewProtocol {
@@ -20,6 +21,8 @@ class DiscoverGenreView: UIViewController, DiscoverGenreViewProtocol {
     var movieList : [Movie]? = []
     var imageList : [UIImage]? = []
     var presenter: DiscoverGenrePresenterProtocol?
+    var page : Int = 1
+    var itemCount : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         moviesCollectionView.register(UINib(nibName: "MovieListCell", bundle: nil), forCellWithReuseIdentifier: "MovieListCell")
@@ -30,9 +33,16 @@ class DiscoverGenreView: UIViewController, DiscoverGenreViewProtocol {
     
     func updateMovieList() {
         DispatchQueue.main.async {
-            self.moviesCollectionView.reloadData()
+            self.moviesCollectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+            self.itemCount = self.movieList?.count ?? 0
         }
         
+    }
+    func appendMovieList(){
+        DispatchQueue.main.async {
+            self.moviesCollectionView.insertItems(at: [IndexPath(item: self.itemCount, section: 0)])
+            self.itemCount = self.movieList?.count ?? 0
+        }
     }
     
 }
@@ -43,30 +53,26 @@ extension DiscoverGenreView : UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieListCell", for: indexPath) as! MovieListCell
+        
         cell.cellTitle.text = movieList?[indexPath.row].original_title
+        
         cell.cellImage.image = self.imageList?[indexPath.row]
+      
         cell.cellImage.contentMode = .scaleToFill
         cell.cellImage.clipsToBounds = true
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         presenter?.didSelectMovie(movie: (movieList?[indexPath.row])!)
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         //load more movies if list nears its end.
         if(indexPath.row == (self.movieList?.count ?? 0)-1 && !(self.movieList?.isEmpty ?? true)){
-            
+            self.page += 1
+            presenter?.loadMoreMovies(page: self.page)
             
         }
     }
-    
-}
-extension DiscoverGenreView : UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let size:CGFloat = (moviesCollectionView.frame.size.width) / 3 //this doesn't work somehow...
-        return CGSize(width: size, height: 100)
-    }
-    
     
 }

@@ -12,6 +12,7 @@ protocol DiscoverGenrePresenterProtocol {
     var view : DiscoverGenreView? { get set }
     var router : DiscoverGenreRouter? {get set}
     var interactor : DiscoverGenreInteractor? {get set}
+    var genreName : String? {get set}
     
     func interactorDidFetchMovies(with results : MovieResult, images : [UIImage])
     func didSelectMovie(movie : Movie)
@@ -31,21 +32,21 @@ class DiscoverGenrePresenter : DiscoverGenrePresenterProtocol{
     }
     
     func interactorDidFetchMovies(with results : MovieResult, images : [UIImage]) {
-        for i in results.results{
-            view?.movieList?.append(i)
-        }
-        for i in images{
-            view?.imageList?.append(i)
-        }
-        view?.updateMovieList()
+        view?.movieList?.append(contentsOf: results.results)
+        view?.imageList?.append(contentsOf: images)
+        //update the table if page is 1, else append.
+        view?.page == 1 ? view?.updateMovieList() : view?.appendMovieList()
+        
     }
+   
     
     func didSelectMovie(movie : Movie) {
         router?.presentMovieDetail(with: movie, from: view!)
     }
     func loadMoreMovies(page : Int) {
-        
+        interactor?.getMovies(with: genreName ?? "None", page: page)
     }
+    
     
     
 }

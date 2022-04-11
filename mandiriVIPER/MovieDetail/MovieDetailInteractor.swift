@@ -22,9 +22,7 @@ class MovieDetailInteractor : MovieDetailInteractorProtocol {
             self.conn.getReviews(with: id, page: 1) { list in
                 self.presenter?.interactorHasRetrievedDetail(detail: detail, image: images[0], link: link, reviews: list)
             }
-            
         }
-        
     }
     
     func getMovieReviews(id: Int, page : Int) -> [Review]{

@@ -31,6 +31,7 @@ class DiscoverGenreRouter : DiscoverGenreRouterProtocol {
         
         view.presenter = presenter
         interactor.presenter = presenter
+        presenter.genreName = genreName
         presenter.router = router
         presenter.interactor = interactor
         presenter.view = view

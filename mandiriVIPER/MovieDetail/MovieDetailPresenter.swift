@@ -12,8 +12,10 @@ protocol MovieDetailPresenterProtocol {
     var router : MovieDetailRouterProtocol? {get set}
     var interactor : MovieDetailInteractorProtocol? {get set}
     var view : MovieDetailViewProtocol? {get set}
-    func interactorHasRetrievedDetail(detail : MovieDetail, image: UIImage, link : String, reviews : [Review])
     var movieID : Int? {get set}
+    
+    func interactorHasRetrievedDetail(detail : MovieDetail, image: UIImage, link : String, reviews : [Review])
+    func getMoreReviews(id : Int, page : Int)
     
 }
 class MovieDetailPresenter : MovieDetailPresenterProtocol{
@@ -35,6 +37,12 @@ class MovieDetailPresenter : MovieDetailPresenterProtocol{
         print("added trailer link of \(link)")
         view?.updateAllViews()
         
+    }
+    func getMoreReviews(id : Int, page : Int){
+        let reviews = interactor?.getMovieReviews(id: id, page: page) ?? []
+        
+        view?.reviews?.append(contentsOf: reviews)
+        view?.appendReview()
     }
     
     

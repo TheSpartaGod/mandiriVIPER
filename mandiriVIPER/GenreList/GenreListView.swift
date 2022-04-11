@@ -13,9 +13,7 @@ protocol GenreListViewProtocol {
     func update(with genres: [Genre])
 }
 class GenreListView: UIViewController , GenreListViewProtocol{
-    
-    
-   
+
 
     @IBOutlet weak var genreTableView: UITableView!
     
@@ -32,8 +30,8 @@ class GenreListView: UIViewController , GenreListViewProtocol{
         genreTableView.delegate = self
         genreTableView.dataSource = self
                
-        // Do any additional setup after loading the view.
     }
+    
     func update(with genres: [Genre]) {
         print("reloaded data")
         DispatchQueue.main.async {
@@ -55,8 +53,9 @@ extension GenreListView : UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print("genre id : \(genreList[indexPath.row].id)")
         self.presenter?.didSelectGenre(genreName: String(genreList[indexPath.row].id), from: self)
+        
     }
     
     

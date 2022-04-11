@@ -13,8 +13,9 @@ protocol MovieDetailViewProtocol {
     var posterImage : UIImage? {get set}
     var trailerLink : String? {get set}
     var reviews : [Review]? {get set}
-    var reviewPageCount : Int? {get set}
+    var reviewCount : Int? {get set}
     func updateAllViews()
+    func appendReview()
     
 }
 class MovieDetailView: UIViewController, MovieDetailViewProtocol {
@@ -23,19 +24,23 @@ class MovieDetailView: UIViewController, MovieDetailViewProtocol {
     var trailerLink: String?
     var posterImage: UIImage?
     var reviews: [Review]?
-    var reviewPageCount : Int? = 0
+    var reviewCount : Int? = 0
+    var page : Int = 1
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var videoBackground: UIView!
     @IBOutlet weak var trailerTitle: UILabel!
     @IBOutlet weak var yearRelease: UILabel!
+    @IBOutlet weak var overviewTextBox: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         reviewTableView.dataSource = self
         reviewTableView.delegate = self
         reviewTableView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellReuseIdentifier: "ReviewCell")
-        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
         
     }
     
@@ -58,8 +63,27 @@ class MovieDetailView: UIViewController, MovieDetailViewProtocol {
             finalWebView.frame = self.videoBackground.bounds
             self.videoBackground.addSubview(finalWebView)
             self.reviewTableView.reloadData()
+            self.reviewCount = self.reviews?.count
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let releaseDate = formatter.date(from: self.movieInfo?.release_date ?? "")
+            formatter.dateFormat = "yyyy"
+            let yearString = formatter.string(from: releaseDate ?? Date())
+            self.yearRelease.text = yearString
+            self.overviewTextBox.text = self.movieInfo?.overview
         }
         
+    }
+    func appendReview(){
+        DispatchQueue.main.async {
+            
+            if (self.reviewCount ?? 0 > self.reviews?.count ?? 0){ //check if there are new reviews
+                self.reviewCount = self.reviews?.count
+                self.reviewTableView.insertRows(at: [IndexPath(row: self.reviewCount ?? 0, section: 0)], with: .fade)
+            }
+            
+            print("appended something to the review box")
+        }
     }
     
 }
@@ -75,8 +99,11 @@ extension MovieDetailView : UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
-    
-    
-    
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.row == (reviews?.count ?? 0)-1 && reviews?.count ?? 0 > 0){
+            page += 1
+            presenter?.getMoreReviews(id: movieInfo?.id ?? 0, page: self.page)
+            
+        }
+    }
 }

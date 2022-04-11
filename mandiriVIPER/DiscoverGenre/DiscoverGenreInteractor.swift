@@ -21,15 +21,8 @@ class DiscoverGenreInteractor : DiscoverGenreInteractorProtocol{
         conn.discoverMovieByGenre(with: genreName, page: page) { movieResults, images in
             
                 self.presenter?.interactorDidFetchMovies(with: movieResults, images: images)
-                print("discovered movies")
             
-           
-            //something nasty somewhere here
-            
+
         }
     }
-    
-    
-    
-    
 }

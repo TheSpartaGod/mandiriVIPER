@@ -32,6 +32,9 @@ class APIConnect{
                 return
             }
             print("resulted in \(json.genres.count) genres")
+            for i in json.genres{
+                print(i.id)
+            }
             completion(json)
             
         }
@@ -40,7 +43,7 @@ class APIConnect{
     
     func discoverMovieByGenre(with genreName : String, page: Int, completion : @escaping (MovieResult, [UIImage]) -> Void){
         let newUrl = "https://api.themoviedb.org/3/discover/movie?api_key=\(apiKey)&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=\(String(page))&with_genres=\(genreName)&with_watch_monetization_types=flatrate"
-        print("attempting to acquire movie list...")
+
         var request = URLRequest(url: URL(string: newUrl)!)
         request.httpMethod = "GET"
         let session = URLSession.shared
@@ -60,22 +63,17 @@ class APIConnect{
                 print("No data from JSON")
                 return
             }
-            print("resulted in \(json.results.count) movies")
             
-       
+            DispatchQueue.main.async {
                 for i in json.results{
                     self.getImage(with: i.poster_path) { image in
                         images.append(image)
-                        print("appended image")
-                        print("image count : \(images.count)")
                         if json.results.count == images.count {
                             completion(json, images)
                         }
                     }
-                  
-                        print("image count : \(images.count)")
-                        
                 }
+            }
         }
         dataTask.resume()
     }
@@ -105,6 +103,7 @@ class APIConnect{
         }
         dataTask.resume()
     }
+    
     func getReviews(with movieID : Int, page : Int, completion : @escaping ([Review]) -> Void){
         let newUrl = "https://api.themoviedb.org/3/movie/\(movieID)/reviews?api_key=90bfed73684adfe1cb42e711b04a482d&language=en-US&page=\(page)"
         
@@ -191,8 +190,13 @@ class APIConnect{
                 return
             }
             DispatchQueue.main.async {
-                let key = json.results[0].key //always get the no. 0 because it is youtube
-                completion(key)
+                if(json.results.count > 0) {
+                    completion(json.results[0].key) // 1st entry to get youtube key
+                } else{
+                    completion("none")
+                }
+    
+                
                 
               
             }
