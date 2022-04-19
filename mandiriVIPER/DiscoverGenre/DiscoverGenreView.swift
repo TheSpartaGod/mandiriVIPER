@@ -18,6 +18,9 @@ protocol DiscoverGenreViewProtocol {
 class DiscoverGenreView: UIViewController, DiscoverGenreViewProtocol {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var moviesCollectionView: UICollectionView!
+
+    @IBOutlet weak var movieEmptyLabel: UITextView!
+    @IBOutlet weak var movieEmptyLoading: UIActivityIndicatorView!
     var movieList : [Movie]? = []
     var imageList : [UIImage]? = []
     var presenter: DiscoverGenrePresenterProtocol?
@@ -33,9 +36,13 @@ class DiscoverGenreView: UIViewController, DiscoverGenreViewProtocol {
     
     func updateMovieList() {
         DispatchQueue.main.async {
+            self.movieEmptyLabel.isHidden = true
+            self.movieEmptyLoading.isHidden = true
+            self.moviesCollectionView.isHidden = false
             self.moviesCollectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
             self.itemCount = self.movieList?.count ?? 0
         }
+        
         
     }
     func appendMovieList(){

@@ -32,6 +32,7 @@ class MovieDetailView: UIViewController, MovieDetailViewProtocol {
     @IBOutlet weak var videoBackground: UIView!
     @IBOutlet weak var trailerTitle: UILabel!
     @IBOutlet weak var yearRelease: UILabel!
+    @IBOutlet weak var emptyReviewLabel: UILabel!
     @IBOutlet weak var overviewTextBox: UITextView!
     
     override func viewDidLoad() {
@@ -40,10 +41,6 @@ class MovieDetailView: UIViewController, MovieDetailViewProtocol {
         reviewTableView.delegate = self
         reviewTableView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellReuseIdentifier: "ReviewCell")
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        
-    }
-    
     func updateAllViews() {
         DispatchQueue.main.async {
             self.movieTitleLabel.text = self.movieInfo!.original_title
@@ -62,8 +59,16 @@ class MovieDetailView: UIViewController, MovieDetailViewProtocol {
             guard let finalWebView = webView else{ return}
             finalWebView.frame = self.videoBackground.bounds
             self.videoBackground.addSubview(finalWebView)
-            self.reviewTableView.reloadData()
-            self.reviewCount = self.reviews?.count
+            if(self.reviews?.count ?? 0 > 0){
+                self.reviewTableView.reloadData()
+                self.reviewCount = self.reviews?.count
+                self.emptyReviewLabel.isHidden = true
+            } else{
+                self.reviewTableView.isHidden = true
+                self.emptyReviewLabel.isHidden = false
+                
+            }
+            
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
             let releaseDate = formatter.date(from: self.movieInfo?.release_date ?? "")
@@ -77,12 +82,10 @@ class MovieDetailView: UIViewController, MovieDetailViewProtocol {
     func appendReview(){
         DispatchQueue.main.async {
             
-            if (self.reviewCount ?? 0 > self.reviews?.count ?? 0){ //check if there are new reviews
+            if (self.reviewCount ?? 0 > self.reviews?.count ?? 0 && self.reviews?.count ?? 0 > 0){ //check if there are new reviews
                 self.reviewCount = self.reviews?.count
                 self.reviewTableView.insertRows(at: [IndexPath(row: self.reviewCount ?? 0, section: 0)], with: .fade)
             }
-            
-            print("appended something to the review box")
         }
     }
     
@@ -93,11 +96,12 @@ extension MovieDetailView : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = reviewTableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewCell
         cell.reviewNameLabel.text = reviews?[indexPath.row].author
         cell.reviewContentLabel.text = reviews?[indexPath.row].content
-        
         return cell
+        
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if(indexPath.row == (reviews?.count ?? 0)-1 && reviews?.count ?? 0 > 0){

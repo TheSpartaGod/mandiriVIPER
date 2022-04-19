@@ -23,7 +23,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E6a-10-rhL">
+                            <collectionView hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E6a-10-rhL">
                                 <rect key="frame" x="20" y="91" width="374" height="771"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="cUG-jJ-Agc">
@@ -43,6 +43,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="N2S-ZQ-dzy">
+                                <rect key="frame" x="20" y="368" width="374" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please wait while we get you some movies..." textAlignment="center" id="PrV-ph-STN">
+                                <rect key="frame" x="100" y="308" width="207" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -52,10 +64,13 @@
                             <constraint firstItem="E6a-10-rhL" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="C3V-fO-4Y8"/>
                             <constraint firstItem="lEg-30-b0B" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Epj-bA-R5W"/>
                             <constraint firstItem="E6a-10-rhL" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-20" id="iPx-kT-drl"/>
+                            <constraint firstItem="PrV-ph-STN" firstAttribute="top" secondItem="lEg-30-b0B" secondAttribute="bottom" constant="242" id="nFi-CO-hbZ"/>
                             <constraint firstItem="E6a-10-rhL" firstAttribute="top" secondItem="lEg-30-b0B" secondAttribute="bottom" constant="25" id="v8y-qT-Rc2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="movieEmptyLabel" destination="PrV-ph-STN" id="Fk9-BB-LMQ"/>
+                        <outlet property="movieEmptyLoading" destination="N2S-ZQ-dzy" id="Xvn-L0-3ub"/>
                         <outlet property="moviesCollectionView" destination="E6a-10-rhL" id="Awh-zX-KN8"/>
                         <outlet property="titleLabel" destination="lEg-30-b0B" id="R7P-LK-0uL"/>
                     </connections>
@@ -66,6 +81,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
