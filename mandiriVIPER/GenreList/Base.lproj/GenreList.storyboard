@@ -16,14 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Adp-hJ-5Fp">
-                                <rect key="frame" x="0.0" y="103" width="414" height="711"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please wait Getting a list of genres..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qaj-HU-KuW">
+                                <rect key="frame" x="87" y="275" width="240" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="e41-0J-TW4">
+                                <rect key="frame" x="197" y="362" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Adp-hJ-5Fp">
+                                <rect key="frame" x="0.0" y="73" width="414" height="741"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List of Genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rn-9I-aWT">
-                                <rect key="frame" x="20" y="67" width="113" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of Genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rn-9I-aWT">
+                                <rect key="frame" x="15" y="44" width="113" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -31,8 +39,26 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Adp-hJ-5Fp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3Cx-1b-oCm"/>
+                            <constraint firstItem="e41-0J-TW4" firstAttribute="top" secondItem="Qaj-HU-KuW" secondAttribute="bottom" constant="17" id="4Ur-Cy-a7n"/>
+                            <constraint firstItem="9rn-9I-aWT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="60p-Vv-tcb"/>
+                            <constraint firstItem="e41-0J-TW4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="197" id="DQO-iA-j8I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qaj-HU-KuW" secondAttribute="trailing" constant="87" id="NTu-IN-hEn"/>
+                            <constraint firstItem="Adp-hJ-5Fp" firstAttribute="top" secondItem="9rn-9I-aWT" secondAttribute="bottom" constant="8" symbolic="YES" id="Pfh-uH-KEK"/>
+                            <constraint firstItem="e41-0J-TW4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="318" id="T5F-7V-kYm"/>
+                            <constraint firstItem="Adp-hJ-5Fp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cze-Xi-NRx"/>
+                            <constraint firstItem="9rn-9I-aWT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="giN-fC-Mjl"/>
+                            <constraint firstItem="Qaj-HU-KuW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="im6-VD-IBC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e41-0J-TW4" secondAttribute="trailing" constant="197" id="jSy-rb-Dns"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Adp-hJ-5Fp" secondAttribute="bottom" constant="48" id="lmw-Dk-s5w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9rn-9I-aWT" secondAttribute="trailing" symbolic="YES" id="ocP-xG-EZT"/>
+                            <constraint firstItem="Qaj-HU-KuW" firstAttribute="top" secondItem="9rn-9I-aWT" secondAttribute="bottom" constant="210" id="pVP-c7-c6R"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="emptyGenreLabel" destination="Qaj-HU-KuW" id="4wg-AL-jgP"/>
+                        <outlet property="emptyGenreLoading" destination="e41-0J-TW4" id="Bxt-Iq-VWt"/>
                         <outlet property="genreTableView" destination="Adp-hJ-5Fp" id="LDz-Cw-dUb"/>
                     </connections>
                 </viewController>
@@ -42,6 +68,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

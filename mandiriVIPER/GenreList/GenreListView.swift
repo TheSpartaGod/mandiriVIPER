@@ -16,6 +16,8 @@ class GenreListView: UIViewController , GenreListViewProtocol{
 
 
     @IBOutlet weak var genreTableView: UITableView!
+    @IBOutlet weak var emptyGenreLabel: UITextView!
+    @IBOutlet weak var emptyGenreLoading: UIActivityIndicatorView!
     
     var genreList : [Genre] = []
     var presenter: GenrePresenterProtocol?
@@ -37,6 +39,9 @@ class GenreListView: UIViewController , GenreListViewProtocol{
         DispatchQueue.main.async {
             self.genreList = genres
             self.genreTableView.reloadData()
+            self.genreTableView.isHidden = false
+            self.emptyGenreLoading.isHidden = true
+            self.emptyGenreLabel.isHidden = true
             
         }
     }

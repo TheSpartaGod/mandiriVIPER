@@ -18,8 +18,7 @@ protocol DiscoverGenreViewProtocol {
 class DiscoverGenreView: UIViewController, DiscoverGenreViewProtocol {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var moviesCollectionView: UICollectionView!
-
-    @IBOutlet weak var movieEmptyLabel: UITextView!
+    @IBOutlet weak var movieEmptyLabel: UILabel!
     @IBOutlet weak var movieEmptyLoading: UIActivityIndicatorView!
     var movieList : [Movie]? = []
     var imageList : [UIImage]? = []

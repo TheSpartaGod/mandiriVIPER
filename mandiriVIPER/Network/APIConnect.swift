@@ -64,11 +64,17 @@ class APIConnect{
                 return
             }
             
+            for _ in 0...json.results.count-1{
+                // this for loop is to prevent image mixing by reserving the indexes for the images
+                images.append(UIImage())
+            }
+            
             DispatchQueue.main.async {
-                for i in json.results{
-                    self.getImage(with: i.poster_path) { image in
-                        images.append(image)
-                        if json.results.count == images.count {
+                for i in 0...json.results.count-1{
+                    self.getImage(with: json.results[i].poster_path) { image in
+                        
+                        images[i] = image
+                        if i == images.count - 1{
                             completion(json, images)
                         }
                     }

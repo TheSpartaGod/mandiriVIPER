@@ -43,28 +43,30 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="N2S-ZQ-dzy">
-                                <rect key="frame" x="20" y="368" width="374" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please wait while we get you some movies..." textAlignment="center" id="PrV-ph-STN">
-                                <rect key="frame" x="100" y="308" width="207" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please wait while we get you some movies..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PrV-ph-STN">
+                                <rect key="frame" x="107" y="308" width="200" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="N2S-ZQ-dzy">
+                                <rect key="frame" x="192" y="433" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PrV-ph-STN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="107" id="1jd-eR-aNA"/>
                             <constraint firstItem="E6a-10-rhL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="6dW-06-0wX"/>
                             <constraint firstItem="lEg-30-b0B" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="8uI-IL-Wt0"/>
+                            <constraint firstItem="PrV-ph-STN" firstAttribute="top" secondItem="lEg-30-b0B" secondAttribute="bottom" constant="242" id="AK0-xE-id6"/>
                             <constraint firstItem="E6a-10-rhL" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="C3V-fO-4Y8"/>
                             <constraint firstItem="lEg-30-b0B" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Epj-bA-R5W"/>
+                            <constraint firstItem="N2S-ZQ-dzy" firstAttribute="top" secondItem="PrV-ph-STN" secondAttribute="bottom" constant="25" id="hqC-jM-Lze"/>
                             <constraint firstItem="E6a-10-rhL" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-20" id="iPx-kT-drl"/>
-                            <constraint firstItem="PrV-ph-STN" firstAttribute="top" secondItem="lEg-30-b0B" secondAttribute="bottom" constant="242" id="nFi-CO-hbZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PrV-ph-STN" secondAttribute="trailing" constant="107" id="lBk-sa-upD"/>
                             <constraint firstItem="E6a-10-rhL" firstAttribute="top" secondItem="lEg-30-b0B" secondAttribute="bottom" constant="25" id="v8y-qT-Rc2"/>
                         </constraints>
                     </view>
