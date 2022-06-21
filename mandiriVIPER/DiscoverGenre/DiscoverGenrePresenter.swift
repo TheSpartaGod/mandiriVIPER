@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol DiscoverGenrePresenterProtocol {
+protocol DiscoverGenrePresenterProtocol : AnyObject {
     var view : DiscoverGenreView? { get set }
     var router : DiscoverGenreRouter? {get set}
     var interactor : DiscoverGenreInteractor? {get set}
@@ -21,11 +21,11 @@ protocol DiscoverGenrePresenterProtocol {
 }
 
 class DiscoverGenrePresenter : DiscoverGenrePresenterProtocol{
-    var view: DiscoverGenreView?
+    weak var view: DiscoverGenreView?
     
     var router: DiscoverGenreRouter?
     var genreName : String?
-    var interactor: DiscoverGenreInteractor?{
+    weak var interactor: DiscoverGenreInteractor?{
         didSet{
             interactor?.getMovies(with:genreName ?? "None" ,page: 1 )
         }

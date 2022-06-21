@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol DiscoverGenreViewProtocol {
+protocol DiscoverGenreViewProtocol : AnyObject{
     var presenter : DiscoverGenrePresenterProtocol? { get set}
     func updateMovieList()
     var movieList : [Movie]? {get set}

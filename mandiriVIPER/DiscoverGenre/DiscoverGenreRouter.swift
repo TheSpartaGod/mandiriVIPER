@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol DiscoverGenreRouterProtocol{
+protocol DiscoverGenreRouterProtocol : AnyObject{
     var entryView : DiscoverGenreView? {get}
     
     static func start(with genreName : String) -> DiscoverGenreRouterProtocol
@@ -17,7 +17,7 @@ protocol DiscoverGenreRouterProtocol{
 
 class DiscoverGenreRouter : DiscoverGenreRouterProtocol {
    
-    var entryView: DiscoverGenreView?
+    weak var entryView: DiscoverGenreView?
     //var discoverGenreName : String?
     static func start(with genreName : String) -> DiscoverGenreRouterProtocol {
         

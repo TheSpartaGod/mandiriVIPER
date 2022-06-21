@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol MovieDetailInteractorProtocol {
+protocol MovieDetailInteractorProtocol : AnyObject {
     var presenter : MovieDetailPresenterProtocol? {get set}
     func getMovieDetails(id : Int)
     func getMovieReviews(id : Int, page : Int) -> [Review]
 
 }
 class MovieDetailInteractor : MovieDetailInteractorProtocol {
-    var presenter : MovieDetailPresenterProtocol?
+    weak var presenter : MovieDetailPresenterProtocol?
     let conn : APIConnect = APIConnect()
     
     func getMovieDetails(id: Int){

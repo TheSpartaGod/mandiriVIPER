@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol MovieDetailPresenterProtocol {
+protocol MovieDetailPresenterProtocol : AnyObject{
     var router : MovieDetailRouterProtocol? {get set}
     var interactor : MovieDetailInteractorProtocol? {get set}
     var view : MovieDetailViewProtocol? {get set}
@@ -21,9 +21,9 @@ protocol MovieDetailPresenterProtocol {
 class MovieDetailPresenter : MovieDetailPresenterProtocol{
     
     var router: MovieDetailRouterProtocol?
-    var view: MovieDetailViewProtocol?
+    weak var view: MovieDetailViewProtocol?
     var movieID: Int?
-    var interactor: MovieDetailInteractorProtocol?{
+    weak var interactor: MovieDetailInteractorProtocol?{
         didSet{
             interactor?.getMovieDetails(id: movieID ?? 0)
         }

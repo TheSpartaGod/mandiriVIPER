@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol GenrePresenterProtocol{
+protocol GenrePresenterProtocol : AnyObject{
     var router : GenreRouterProtocol? {get set}
     var interactor : GenreInteractorProtocol? {get set}
     var view : GenreListViewProtocol? {get set}
@@ -20,13 +20,13 @@ protocol GenrePresenterProtocol{
 class GenreListPresenter : GenrePresenterProtocol{
 
     
-    var interactor: GenreInteractorProtocol? {
+    weak var interactor: GenreInteractorProtocol? {
         didSet {
             interactor?.getGenres()
         }
     }
     
-    var view: GenreListViewProtocol?
+    weak var view: GenreListViewProtocol?
     
     var router: GenreRouterProtocol?
     

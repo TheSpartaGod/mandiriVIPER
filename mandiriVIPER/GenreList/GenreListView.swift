@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol GenreListViewProtocol {
+protocol GenreListViewProtocol : AnyObject {
     var presenter : GenrePresenterProtocol? {get set}
     var viewController : GenreListView? {get set}
     func update(with genres: [Genre])
@@ -26,7 +26,6 @@ class GenreListView: UIViewController , GenreListViewProtocol{
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print("bruh moment")
         viewController = self
         genreTableView.register(UINib(nibName: "GenreCell", bundle: nil), forCellReuseIdentifier:"GenreCell")
         genreTableView.delegate = self
@@ -35,7 +34,6 @@ class GenreListView: UIViewController , GenreListViewProtocol{
     }
     
     func update(with genres: [Genre]) {
-        print("reloaded data")
         DispatchQueue.main.async {
             self.genreList = genres
             self.genreTableView.reloadData()

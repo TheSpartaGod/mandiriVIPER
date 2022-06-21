@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-protocol MovieDetailRouterProtocol {
+protocol MovieDetailRouterProtocol : AnyObject{
     var entryView : MovieDetailView? {get}
     var presenter : MovieDetailPresenterProtocol? {get set}
     static func start(with movie : Movie) -> MovieDetailRouterProtocol
     
 }
 class MovieDetailRouter : MovieDetailRouterProtocol{
-    var presenter: MovieDetailPresenterProtocol?
-    var entryView: MovieDetailView?
+    weak var presenter: MovieDetailPresenterProtocol?
+    weak var entryView: MovieDetailView?
     
     static func start(with movie : Movie) -> MovieDetailRouterProtocol {
         let router = MovieDetailRouter()

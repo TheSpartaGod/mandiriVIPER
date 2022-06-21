@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GenreInteractorProtocol{
+protocol GenreInteractorProtocol : AnyObject{
     var presenter : GenrePresenterProtocol? {get set}
     
     func getGenres()
@@ -16,7 +16,7 @@ protocol GenreInteractorProtocol{
 }
 
 class GenreListInteractor : GenreInteractorProtocol{
-    var presenter: GenrePresenterProtocol?
+   weak var presenter: GenrePresenterProtocol?
     
     func getGenres() {
     let conn : APIConnect = APIConnect()

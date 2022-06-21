@@ -7,7 +7,7 @@
 
 import UIKit
 import WebKit
-protocol MovieDetailViewProtocol {
+protocol MovieDetailViewProtocol : AnyObject{
     var presenter : MovieDetailPresenterProtocol? {get set}
     var movieInfo : MovieDetail? {get set}
     var posterImage : UIImage? {get set}

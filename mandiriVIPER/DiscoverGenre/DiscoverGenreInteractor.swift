@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol DiscoverGenreInteractorProtocol {
+protocol DiscoverGenreInteractorProtocol : AnyObject{
     var presenter : DiscoverGenrePresenterProtocol? {get set}
     func getMovies(with genreName : String, page: Int)
     
 }
 class DiscoverGenreInteractor : DiscoverGenreInteractorProtocol{
-    var presenter: DiscoverGenrePresenterProtocol?
+    weak var presenter: DiscoverGenrePresenterProtocol?
     
     func getMovies(with genreName: String, page : Int) {
         let conn : APIConnect = APIConnect()
